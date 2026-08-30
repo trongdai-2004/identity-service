@@ -1,6 +1,7 @@
 package com.example.identity_service.service;
 
 import com.example.identity_service.dto.request.UserCreationRequest;
+import com.example.identity_service.dto.request.UserUpdateRequest;
 import com.example.identity_service.entity.User;
 import com.example.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,16 @@ public class UserService {
         return userRepository.save(user);
 
     }
+
+    public User updateUser(String userID, UserUpdateRequest request){
+        User user = getUser(userID);
+        user.setPassword(request.getPassword());
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setDob(request.getDob());
+
+        return userRepository.save(user);
+    }
     public List<User> getUser(){
         return userRepository.findAll();
     }
@@ -34,6 +45,8 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
 
     }
+
+
 
 
 }

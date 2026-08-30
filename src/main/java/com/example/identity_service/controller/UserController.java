@@ -1,6 +1,7 @@
 package com.example.identity_service.controller;
 
 import com.example.identity_service.dto.request.UserCreationRequest;
+import com.example.identity_service.dto.request.UserUpdateRequest;
 import com.example.identity_service.entity.User;
 import com.example.identity_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class UserController {
     User getUser(@PathVariable("userId") String userId){
         return userService.getUser(userId);
 
+    }
+    @PutMapping("{userId}")
+    User updateUser( @PathVariable String userId, @RequestBody UserUpdateRequest request){
+        return userService.updateUser(userId, request);
     }
 
 
