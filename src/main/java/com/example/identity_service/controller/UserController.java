@@ -25,4 +25,11 @@ public class UserController {
         return userService.getUser();
     }
 
+    @GetMapping("/{userId}")
+    User getUser(@PathVariable("userId") String userId){
+        return userService.getUser(userId);
+
+    }
+
+
 }
