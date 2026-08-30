@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Entity
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
 
